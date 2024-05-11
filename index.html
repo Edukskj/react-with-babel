@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React with Babel</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        h1 {
+            font-family: sans-serif;
+        }
+        p {
+            font-size: 23px;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/babel">
+        function formatName(user) {
+          return user.firstName + ' ' + user.lastName;
+        }
+    
+        const user = {
+          firstName: 'Eduardo',
+          lastName: 'Trindade',
+          idade: 17
+        };
+    
+        //  wrapping it in parentheses to avoid the pitfalls of automatic semicolon insertion.
+        const element = (
+          <h1>
+            Olá, {formatName(user)}!
+          </h1>
+        );
+
+        const idade = (
+            <p>
+                Você tem <strong>{user.idade}</strong> anos
+            </p>
+        );
+
+    </script>
+    <div id="root">
+        <script type="text/babel">
+            ReactDOM.render(
+              element,
+              document.getElementById('root')
+            );
+        </script>
+    </div>
+
+    <div id="idade">
+        <script type="text/babel">
+            ReactDOM.render(
+              idade,
+              document.getElementById('idade')
+            );
+        </script>
+    </div>
+</body>
+</html>
